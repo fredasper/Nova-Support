@@ -1,4 +1,6 @@
-﻿const ADMIN_API_BASE = 'http://localhost:8080/appdib/backend/api/admin';
+﻿const ADMIN_BASE_URL = window.NOVA_API_BASE || (window.location.hostname === 'localhost' ? '/appdib/backend/api' : '/api');
+const ADMIN_API_BASE = `${ADMIN_BASE_URL}/admin`;
+const RECENT_QUESTIONS_PREVIEW_COUNT = 5;
 
 function formatDateTime(dateString) {
     if (!dateString) {
@@ -39,6 +41,35 @@ async function adminFetch(path, options = {}) {
     return data;
 }
 
+function renderRecentQuestions(container, items, expanded = false) {
+    if (!items || items.length === 0) {
+        container.innerHTML = '<div class="list-item">No chatbot questions yet.</div>';
+        return;
+    }
+
+    const visibleCount = expanded ? items.length : Math.min(RECENT_QUESTIONS_PREVIEW_COUNT, items.length);
+    const visibleItems = items.slice(0, visibleCount);
+
+    container.innerHTML = visibleItems.map((item) => `
+        <div class="list-item">
+            <div class="list-item-title">${escapeHtml(item.user_message)}</div>
+            <div class="list-item-meta">${formatDateTime(item.created_at)}</div>
+        </div>
+    `).join('');
+
+    if (items.length > RECENT_QUESTIONS_PREVIEW_COUNT) {
+        const toggleBtn = document.createElement('button');
+        toggleBtn.type = 'button';
+        toggleBtn.className = 'primary-btn';
+        toggleBtn.style.marginTop = '10px';
+        toggleBtn.textContent = expanded ? 'Show Less' : 'Show More';
+        toggleBtn.addEventListener('click', function() {
+            renderRecentQuestions(container, items, !expanded);
+        });
+        container.appendChild(toggleBtn);
+    }
+}
+
 async function loadRecentQuestions() {
     const container = document.getElementById('recentQuestionsList');
     const topQuestion = document.getElementById('topQuestionText');
@@ -53,17 +84,7 @@ async function loadRecentQuestions() {
             topQuestion.textContent = 'Top question: none yet';
         }
 
-        if (items.length === 0) {
-            container.innerHTML = '<div class="list-item">No chatbot questions yet.</div>';
-            return;
-        }
-
-        container.innerHTML = items.map((item) => `
-            <div class="list-item">
-                <div class="list-item-title">${escapeHtml(item.user_message)}</div>
-                <div class="list-item-meta">${formatDateTime(item.created_at)}</div>
-            </div>
-        `).join('');
+        renderRecentQuestions(container, items, false);
     } catch (error) {
         container.innerHTML = `<div class="list-item">Failed to load questions: ${escapeHtml(error.message)}</div>`;
         topQuestion.textContent = 'Top question: unavailable';
@@ -166,4 +187,3 @@ async function initializeAdminDashboardPage() {
         loadRecentSurveys()
     ]);
 }
-
