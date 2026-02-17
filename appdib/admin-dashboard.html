@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Support | Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body onload="initializeAdminDashboardPage()">
+    <div class="admin-page">
+        <header class="admin-header">
+            <div class="admin-brand">Nova Support Admin</div>
+            <div class="admin-actions">
+                <span class="admin-name" id="adminName">Admin</span>
+                <button class="logout-btn" onclick="handleLogout()">LOGOUT</button>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <section class="admin-card">
+                <div class="card-top-row">
+                    <h2>Recent Chatbot Questions</h2>
+                    <button id="exportFaqBtn" class="primary-btn" onclick="exportQuestionsToFaq()">Export Questions to FAQ</button>
+                </div>
+                <p class="muted" id="topQuestionText">Top question: loading...</p>
+                <div id="recentQuestionsList" class="list-block"></div>
+            </section>
+
+            <section class="admin-card">
+                <h2>Survey Result Analytics</h2>
+                <div id="surveySummary" class="stats-grid"></div>
+                <h3 class="sub-title">Satisfaction Distribution</h3>
+                <div id="satisfactionDistribution" class="list-block"></div>
+            </section>
+
+            <section class="admin-card">
+                <h2>Recently Answered Survey Results</h2>
+                <div id="recentSurveyList" class="list-block"></div>
+            </section>
+        </main>
+    </div>
+    
+
+
+    
+    
+
+    <script>
+        window.NOVA_API_BASE = 'https://nova-support-production.up.railway.app/appdib/backend/api';
+    </script>
+<script src="../js/auth.js"></script>
+    
+    
+<script src="../js/admin.js"></script>
+</body>
+</html>
+
+
+
+
+
+
