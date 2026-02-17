@@ -1,0 +1,156 @@
+﻿/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-color: #2D5F3F;
+    --dark-color: #1a3a2e;
+    --light-color: #E8F4E1;
+    --accent-yellow: #FFD700;
+    --text-dark: #333;
+    --text-light: #666;
+    --text-muted: #999;
+    --border-light: #e0e0e0;
+    --bg-light: #f0f2f5;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    background: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+    display: none !important;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+input {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== SHARED STYLES ===== */
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ===== FORM STYLES ===== */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-light);
+    background: #f8f8f8;
+    font-size: 14px;
+    transition: all 0.3s;
+    color: var(--text-dark);
+    border-radius: 4px;
+}
+
+.form-group input::placeholder {
+    color: #bbb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(45, 95, 63, 0.1);
+}
+
+/* ===== FLOATING CHATBOT BUTTON ===== */
+.floating-chatbot-link {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 1200;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(24, 76, 51, 0.92);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.floating-chatbot-icon {
+    color: #ffffff;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.floating-chatbot-text {
+    display: none;
+}
+
+.floating-chatbot-link:hover {
+    transform: translateY(-2px);
+    background: rgba(33, 94, 64, 0.95);
+}
+
+@media (max-width: 768px) {
+    .floating-chatbot-link {
+        left: 16px;
+        bottom: 16px;
+        width: 62px;
+        height: 62px;
+    }
+
+    .floating-chatbot-icon {
+        font-size: 30px;
+    }
+}

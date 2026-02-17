@@ -1,0 +1,208 @@
+/* ===== OFFICES PAGE STYLES ===== */
+
+.offices-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #3b7a57 0%, #2f684a 100%);
+    min-height: auto;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.offices-content {
+    padding: 40px 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ===== WELCOME SECTION ===== */
+.welcome-section {
+    padding: 30px;
+}
+
+.welcome-section h2 {
+    color: white;
+    font-size: 48px;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+    text-shadow: -2px -2px 0 var(--primary-color), 2px -2px 0 var(--primary-color), -2px 2px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 0px -2px 0 var(--primary-color), 0px 2px 0 var(--primary-color), -2px 0px 0 var(--primary-color), 2px 0px 0 var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.welcome-section p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 600;
+    text-shadow: -1px -1px 0 var(--primary-color), 1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color), 1px 1px 0 var(--primary-color), 0px -1px 0 var(--primary-color), 0px 1px 0 var(--primary-color), -1px 0px 0 var(--primary-color), 1px 0px 0 var(--primary-color);
+}
+
+/* ===== OFFICES GRID ===== */
+.offices-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.office-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(45, 95, 63, 0.15);
+    border: 1px solid rgba(45, 95, 63, 0.1);
+    transition: all 0.3s ease;
+}
+
+.office-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(45, 95, 63, 0.25);
+}
+
+.office-image {
+    flex-shrink: 0;
+    width: 340px;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.office-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.office-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.office-info h3 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.office-title {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.office-description {
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ===== FLOATING BACK BUTTON ===== */
+.floating-back-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(45, 95, 63, 0.25);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-back-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(45, 95, 63, 0.35);
+}
+
+.floating-back-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .offices-content {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .welcome-section {
+        padding: 20px 0;
+    }
+
+    .welcome-section h2 {
+        font-size: 36px;
+    }
+
+    .welcome-section p {
+        font-size: 16px;
+    }
+
+    .offices-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .office-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .office-info {
+        align-items: center;
+    }
+
+    .office-image {
+        width: 230px;
+        height: 120px;
+    }
+
+    .office-photo {
+        border-radius: 8px;
+    }
+
+    .floating-back-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        left: 20px;
+    }
+}

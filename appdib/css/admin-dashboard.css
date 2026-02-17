@@ -1,0 +1,153 @@
+﻿.admin-page {
+    min-height: 100vh;
+    width: 100%;
+    background: #f4f7f5;
+}
+
+.admin-header {
+    height: 84px;
+    background: #1f4f36;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.admin-brand {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-name {
+    font-weight: 600;
+}
+
+.logout-btn {
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.admin-main {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 18px 26px;
+    display: grid;
+    gap: 18px;
+}
+
+.admin-card {
+    background: #fff;
+    border: 1px solid #d9e5dc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+h2 {
+    color: #1f4f36;
+    font-size: 26px;
+}
+
+.sub-title {
+    margin-top: 18px;
+    color: #2d5f3f;
+}
+
+.muted {
+    color: #476252;
+    margin-top: 10px;
+}
+
+.primary-btn {
+    border: none;
+    background: #2d5f3f;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.list-block {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.list-item {
+    border-left: 4px solid #2d5f3f;
+    background: #f1f5f2;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.list-item-title {
+    color: #1f4f36;
+    font-weight: 700;
+}
+
+.list-item-meta {
+    color: #5e7366;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.stats-grid {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.stat-card {
+    background: #f1f5f2;
+    border-left: 4px solid #2d5f3f;
+    padding: 12px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #5e7366;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    margin-top: 4px;
+    font-size: 24px;
+    color: #1f4f36;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .admin-header {
+        height: auto;
+        padding: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+

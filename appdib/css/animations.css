@@ -1,0 +1,170 @@
+/* ===== ANIMATIONS ===== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide Up */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Bounce */
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Fill Progress */
+@keyframes fillProgress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Twinkle (Stars) */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Float (Clouds) */
+@keyframes float {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(30px); }
+}
+
+/* Robot Play Animation */
+@keyframes robot-play {
+    0% {
+        left: -100px;
+        bottom: 40%;
+        opacity: 0;
+        transform: scaleX(1);
+    }
+    5% {
+        opacity: 1;
+    }
+    15% {
+        left: 10%;
+        bottom: 35%;
+        transform: scaleX(1);
+    }
+    25% {
+        left: 25%;
+        bottom: 50%;
+        transform: scaleX(-1);
+    }
+    35% {
+        left: 20%;
+        bottom: 60%;
+        transform: scaleX(-1) translateY(-25px);
+    }
+    38% {
+        left: 20%;
+        bottom: 50%;
+        transform: scaleX(-1) translateY(0);
+    }
+    40% {
+        left: 20%;
+        bottom: 60%;
+        transform: scaleX(-1) translateY(-25px);
+    }
+    42% {
+        left: 20%;
+        bottom: 50%;
+        transform: scaleX(-1) translateY(0);
+    }
+    45% {
+        left: 30%;
+        bottom: 55%;
+        opacity: 1;
+        transform: scaleX(-1);
+    }
+    55% {
+        left: 50%;
+        bottom: 20%;
+        opacity: 0;
+        transform: scaleX(-1);
+    }
+    60% {
+        opacity: 0;
+    }
+    65% {
+        left: 70%;
+        bottom: 35%;
+        opacity: 0.3;
+        transform: scaleX(1);
+    }
+    75% {
+        left: 65%;
+        bottom: 50%;
+        opacity: 0.3;
+        transform: scaleX(1);
+    }
+    85% {
+        left: 60%;
+        bottom: 30%;
+        opacity: 1;
+        transform: scaleX(-1) translateY(-30px);
+    }
+    87% {
+        left: 60%;
+        bottom: 45%;
+        transform: scaleX(-1) translateY(0);
+    }
+    89% {
+        left: 60%;
+        bottom: 30%;
+        transform: scaleX(-1) translateY(-30px);
+    }
+    91% {
+        left: 60%;
+        bottom: 45%;
+        transform: scaleX(-1) translateY(0);
+    }
+    95% {
+        left: -100px;
+        bottom: 50%;
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    100% {
+        left: -100px;
+        bottom: 40%;
+        opacity: 0;
+        transform: scaleX(1);
+    }
+}
+
+/* Slide In */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

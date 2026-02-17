@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Satisfaction Survey</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/survey.css">
+    <style>
+        .floating-chatbot-link {
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            z-index: 1200;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(24, 76, 51, 0.92);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .floating-chatbot-icon {
+            color: #ffffff;
+            font-size: 34px;
+            line-height: 1;
+        }
+
+        .floating-chatbot-text {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .floating-chatbot-link {
+                left: 16px;
+                bottom: 16px;
+                width: 62px;
+                height: 62px;
+            }
+
+            .floating-chatbot-icon {
+                font-size: 30px;
+            }
+        }
+    </style>
+
+<body>
+    <div class="survey-page">
+        <!-- HEADER -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1><span id="surveyUserName">User</span></h1>
+            </div>
+            <nav class="header-links">
+                <a href="dashboard.html" class="header-link">Home</a>
+                <a href="survey.html" class="header-link">Survey</a>
+                <a href="profile.html" class="header-link">Profile</a>
+                <a href="offices.html" class="header-link">Offices</a>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </nav>
+        </header>
+
+        <!-- SURVEY CONTENT -->
+        <div class="survey-content">
+            <div class="survey-header">
+                <h2>Bot Satisfaction Survey</h2>
+                <p>Help us improve Nova by sharing your feedback about your experience with our chatbot</p>
+            </div>
+
+            <form class="survey-form" id="surveyForm">
+                <!-- Question 1 -->
+                <div class="survey-question">
+                    <label>1. How satisfied are you with Nova's responses?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="satisfaction" value="5">
+                            <span>Very Satisfied</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="satisfaction" value="4">
+                            <span>Satisfied</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="satisfaction" value="3">
+                            <span>Neutral</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="satisfaction" value="2">
+                            <span>Dissatisfied</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="satisfaction" value="1">
+                            <span>Very Dissatisfied</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="survey-question">
+                    <label>2. Was Nova easy to use?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="ease-of-use" value="5">
+                            <span>Very Easy</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ease-of-use" value="4">
+                            <span>Easy</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ease-of-use" value="3">
+                            <span>Neutral</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ease-of-use" value="2">
+                            <span>Difficult</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ease-of-use" value="1">
+                            <span>Very Difficult</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="survey-question">
+                    <label>3. How helpful was Nova in answering your questions?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="helpfulness" value="5">
+                            <span>Extremely Helpful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="helpfulness" value="4">
+                            <span>Helpful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="helpfulness" value="3">
+                            <span>Somewhat Helpful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="helpfulness" value="2">
+                            <span>Not Very Helpful</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="helpfulness" value="1">
+                            <span>Not Helpful At All</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="survey-question">
+                    <label>4. How would you rate Nova's response time?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="response-time" value="5">
+                            <span>Excellent</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="response-time" value="4">
+                            <span>Good</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="response-time" value="3">
+                            <span>Average</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="response-time" value="2">
+                            <span>Slow</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="response-time" value="1">
+                            <span>Very Slow</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="survey-question">
+                    <label>5. Would you recommend Nova to other students?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="5">
+                            <span>Definitely Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="4">
+                            <span>Probably Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="3">
+                            <span>Not Sure</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="2">
+                            <span>Probably No</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="1">
+                            <span>Definitely No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Open Feedback -->
+                <div class="survey-question">
+                    <label>6. What can we improve about Nova? (Optional)</label>
+                    <textarea name="feedback" class="feedback-textarea" placeholder="Share your suggestions..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Survey</button>
+            </form>
+
+            <div class="survey-message" id="successMessage" style="display: none;">
+                <h3>Thank you!</h3>
+                <p>Your feedback has been submitted successfully.</p>
+            </div>
+        </div>
+<!-- FOOTER -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 Nova Support. All rights reserved.</p>
+        </footer></div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        initializeSurvey();
+
+        document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const studentEmail = localStorage.getItem('studentEmail');
+            if (!studentEmail) {
+                alert('You are not logged in.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const formData = new FormData(this);
+            const payload = {
+                email: studentEmail,
+                satisfaction: Number(formData.get('satisfaction')),
+                ease_of_use: Number(formData.get('ease-of-use')),
+                helpfulness: Number(formData.get('helpfulness')),
+                response_time: Number(formData.get('response-time')),
+                recommend_score: Number(formData.get('recommend')),
+                feedback: formData.get('feedback') || ''
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/appdib/backend/api/survey/submit.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    alert(data.error || 'Failed to submit survey.');
+                    return;
+                }
+
+                document.getElementById('surveyForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+
+                setTimeout(function() {
+                    document.getElementById('surveyForm').reset();
+                    document.getElementById('surveyForm').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 2000);
+            } catch (err) {
+                console.error(err);
+                alert('Server error while submitting survey.');
+            }
+        });
+    </script>
+
+    <a href="dashboard.html#chatbot" class="floating-chatbot-link" title="Go to Chatbot">
+        <span class="floating-chatbot-icon">&#128172;</span>
+        <span class="floating-chatbot-text">Chatbot</span>
+    </a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
