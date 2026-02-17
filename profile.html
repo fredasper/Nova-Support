@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova - Student Support Assistant | Profile</title>
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <style>
+        .floating-chatbot-link {
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            z-index: 1200;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(24, 76, 51, 0.92);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .floating-chatbot-icon {
+            color: #ffffff;
+            font-size: 34px;
+            line-height: 1;
+        }
+
+        .floating-chatbot-text {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .floating-chatbot-link {
+                left: 16px;
+                bottom: 16px;
+                width: 62px;
+                height: 62px;
+            }
+
+            .floating-chatbot-icon {
+                font-size: 30px;
+            }
+        }
+    </style>
+
+<body onload="initializeProfile()">
+    <div class="container">
+        <!-- PROFILE PAGE -->
+        <div id="profilePage" class="profile-page">
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <h1><span id="profileUserName">User</span></h1>
+                </div>
+                <div class="header-links">
+                    <a href="dashboard.html" class="header-link">Home</a>
+                    <a href="survey.html" class="header-link">Survey</a>
+                    <a href="profile.html" class="header-link">Profile</a>
+                    <a href="offices.html" class="header-link">Offices</a>
+                    <button class="logout-btn" onclick="handleLogout()">LOGOUT</button>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2 id="welcomeText">Welcome back, User!</h2>
+                    <p id="welcomeDescription">Here's what's happening with your academic journey today.</p>
+                </div>
+
+                <!-- Profile Details Section -->
+                <div class="profile-details-section">
+                    <h3>Your Profile Information</h3>
+                    <div class="profile-info">
+                        <div class="info-group">
+                            <label>Student ID</label>
+                            <p id="studentId">-</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Email</label>
+                            <p id="studentEmail">-</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Program</label>
+                            <p id="studentProgram">-</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Year Level</label>
+                            <p id="studentYear">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="profile-main-grid">
+                    <!-- Active Courses Section -->
+                    <div class="upcoming-events-section">
+                        <h3>&#128218; Active Courses</h3>
+                        <div class="events-list" id="activeCoursesList">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="date-month">CS</div>
+                                    <div class="date-day">301</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">Introduction to Programming</div>
+                                    <div class="event-time">Dr. Smith</div>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="date-month">MTH</div>
+                                    <div class="date-day">205</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">Calculus II</div>
+                                    <div class="event-time">Dr. Johnson</div>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="date-month">ENG</div>
+                                    <div class="date-day">102</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">English Composition</div>
+                                    <div class="event-time">Prof. Williams</div>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="date-month">PHY</div>
+                                    <div class="date-day">201</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">Physics I</div>
+                                    <div class="event-time">Dr. Brown</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Assignments Section -->
+                    <div class="recent-grades-section">
+                        <h3>&#128203; Pending Assignments</h3>
+                        <div class="grades-list" id="pendingAssignmentsList">
+                            <div class="grade-item">
+                                <div class="grade-course">
+                                    <div class="course-code">CS 301</div>
+                                    <div class="assignment-name">Project 3 - Web App</div>
+                                </div>
+                                <div class="grade-badge">
+                                    <div class="grade-letter">Due:</div>
+                                    <div class="grade-score">Feb 15</div>
+                                </div>
+                            </div>
+                            <div class="grade-item">
+                                <div class="grade-course">
+                                    <div class="course-code">MATH 205</div>
+                                    <div class="assignment-name">Problem Set 7</div>
+                                </div>
+                                <div class="grade-badge">
+                                    <div class="grade-letter">Due:</div>
+                                    <div class="grade-score">Feb 16</div>
+                                </div>
+                            </div>
+                            <div class="grade-item">
+                                <div class="grade-course">
+                                    <div class="course-code">ENG 102</div>
+                                    <div class="assignment-name">Research Paper</div>
+                                </div>
+                                <div class="grade-badge">
+                                    <div class="grade-letter">Due:</div>
+                                    <div class="grade-score">Feb 20</div>
+                                </div>
+                            </div>
+                            <div class="grade-item">
+                                <div class="grade-course">
+                                    <div class="course-code">PHYS 201</div>
+                                    <div class="assignment-name">Lab Report 3</div>
+                                </div>
+                                <div class="grade-badge">
+                                    <div class="grade-letter">Due:</div>
+                                    <div class="grade-score">Feb 18</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <div class="footer-content">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#css" data-footer-link="css">CSS</a></li>
+                        <li><a href="#kins" data-footer-link="kins">KINS</a></li>
+                        <li><a href="#finance" data-footer-link="finance">Finance</a></li>
+                        <li><a href="#registrar" data-footer-link="registrar">Registrar</a></li>
+                        <li><a href="#supplies" data-footer-link="supplies">Supplies</a></li>
+                        <li><a href="#clinic" data-footer-link="clinic">Clinic</a></li>
+                    </ul>
+                    <div class="footer-divider"></div>
+                    <p class="footer-copyright">&copy; 2026 Nova Support. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    
+
+
+    
+    
+
+    <script>
+        window.NOVA_API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? '/appdib/backend/api' : 'https://nova-support-production.up.railway.app/appdib/backend/api';
+    </script>
+<script src="../js/auth.js?v=20260218"></script>
+    
+    
+<script src="../js/utils.js"></script>
+    
+    
+<script src="../js/main.js"></script>
+    <a href="dashboard.html#chatbot" class="floating-chatbot-link" title="Go to Chatbot">
+        <span class="floating-chatbot-icon">&#128172;</span>
+        <span class="floating-chatbot-text">Chatbot</span>
+    </a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
