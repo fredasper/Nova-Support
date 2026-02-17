@@ -1,4 +1,6 @@
-﻿/* ===== CHAT FUNCTIONALITY ===== */
+﻿const CHAT_API_BASE_URL = window.NOVA_API_BASE || (window.location.hostname === 'localhost' ? '/appdib/backend/api' : '/api');
+
+/* ===== CHAT FUNCTIONALITY ===== */
 
 let isSendingMessage = false;
 
@@ -42,7 +44,7 @@ async function sendMessage() {
 
     try {
         const email = localStorage.getItem('studentEmail') || '';
-        const response = await fetch('http://localhost:8080/appdib/backend/api/chat/send.php', {
+        const response = await fetch(API_BASE_URL + '/chat/send.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -137,3 +139,9 @@ function removeTypingIndicator(typingId) {
         typingMessage.remove();
     }
 }
+
+
+
+
+
+
