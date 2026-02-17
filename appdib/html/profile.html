@@ -102,7 +102,7 @@
                 <div class="profile-main-grid">
                     <!-- Active Courses Section -->
                     <div class="upcoming-events-section">
-                        <h3>ðŸ“š Active Courses</h3>
+                        <h3>&#128218; Active Courses</h3>
                         <div class="events-list" id="activeCoursesList">
                             <div class="event-item">
                                 <div class="event-date">
@@ -149,7 +149,7 @@
 
                     <!-- Pending Assignments Section -->
                     <div class="recent-grades-section">
-                        <h3>ðŸ“‹ Pending Assignments</h3>
+                        <h3>&#128203; Pending Assignments</h3>
                         <div class="grades-list" id="pendingAssignmentsList">
                             <div class="grade-item">
                                 <div class="grade-course">
@@ -215,16 +215,35 @@
     </div>
 
     <!-- JavaScript Modules -->
-    <script src="../js/auth.js"></script>
-    <script src="../js/utils.js"></script>
-    <script src="../js/main.js"></script>
+    
 
+
+    
+    
+
+    <script>
+        window.NOVA_API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? '/appdib/backend/api' : 'https://nova-support-production.up.railway.app/appdib/backend/api';
+    </script>
+<script src="../js/auth.js"></script>
+    
+    
+<script src="../js/utils.js"></script>
+    
+    
+<script src="../js/main.js"></script>
     <a href="dashboard.html#chatbot" class="floating-chatbot-link" title="Go to Chatbot">
         <span class="floating-chatbot-icon">&#128172;</span>
         <span class="floating-chatbot-text">Chatbot</span>
     </a>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
