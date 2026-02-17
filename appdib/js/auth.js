@@ -1,6 +1,8 @@
 ﻿/* ===== AUTHENTICATION ===== */
 
-const API_BASE = 'http://localhost:8080/appdib/backend/api';
+const FALLBACK_API_BASE = '/appdib/backend/api';
+const API_BASE_URL = window.NOVA_API_BASE || (window.location.hostname === 'localhost' ? FALLBACK_API_BASE : '/api');
+const API_BASE = API_BASE_URL;
 
 function isAdminLoggedIn() {
     return localStorage.getItem('isAdmin') === 'true';
@@ -22,7 +24,20 @@ function checkIfLoggedIn() {
     }
 }
 
-async function postJson(url, payload) {
+function toSameOriginRelativeUrl(url) {
+    try {
+        const parsed = new URL(url, window.location.origin);
+        if (parsed.origin === window.location.origin) {
+            return `${parsed.pathname}${parsed.search}`;
+        }
+    } catch (error) {
+        return null;
+    }
+
+    return null;
+}
+
+async function fetchJsonWithBody(url, payload) {
     const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -37,6 +52,19 @@ async function postJson(url, payload) {
     }
 
     return { response, data };
+}
+
+async function postJson(url, payload) {
+    try {
+        return await fetchJsonWithBody(url, payload);
+    } catch (firstError) {
+        const sameOriginUrl = toSameOriginRelativeUrl(url);
+        if (sameOriginUrl && sameOriginUrl !== url) {
+            return await fetchJsonWithBody(sameOriginUrl, payload);
+        }
+
+        throw firstError;
+    }
 }
 
 function setStudentSession(user) {
@@ -205,5 +233,3 @@ function initializeDashboard() {
         loadFaqs();
     }
 }
-
-
