@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $host = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: '127.0.0.1';
 $db   = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'appdib_db';
 $user = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
